@@ -2,6 +2,8 @@
 
 This guide outlines a 3–5 minute high-impact demonstration flow for presenting FortyGuard Heat Intelligence to hackathon judges, evaluators, and stakeholders.
 
+> 🌐 **Live Application URL**: [fortyguard-heat-intelligence.streamlit.app](https://fortyguard-heat-intelligence.streamlit.app/)
+
 ---
 
 ## 1. Demo Narrative Overview

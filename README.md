@@ -2,12 +2,16 @@
 
 An explainable heat intelligence and operational decision-support platform that turns provider-backed urban thermal analyses into actionable signals, alerts, prioritized investigations, cryptographic evidence bundles, and decision-ready reports.
 
+[![Live Demo](https://img.shields.io/badge/Live%20App-Streamlit%20Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://fortyguard-heat-intelligence.streamlit.app/)
+
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.40%2B-FF4B4B.svg)](https://streamlit.io/)
 [![Tests](https://img.shields.io/badge/Tests-1528%20Passed-success.svg)](docs/TESTING.md)
 [![Security](https://img.shields.io/badge/Security-Credential%20Isolated-blueviolet.svg)](docs/SECURITY.md)
 [![Local Intelligence](https://img.shields.io/badge/Local%20Intelligence-Zero--Network-brightgreen.svg)](docs/ARCHITECTURE.md)
+
+> 🚀 **Live Deployment**: Access the live cloud platform at **[fortyguard-heat-intelligence.streamlit.app](https://fortyguard-heat-intelligence.streamlit.app/)**
 
 $$\text{Observe} \longrightarrow \text{Compare} \longrightarrow \text{Detect} \longrightarrow \text{Prioritize} \longrightarrow \text{Investigate} \longrightarrow \text{Explain} \longrightarrow \text{Decide}$$
 
