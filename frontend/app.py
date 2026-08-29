@@ -15,6 +15,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+import os
+import threading
+import time
+import httpx
+import uvicorn
 import streamlit as st
 
 from frontend.components.design_system import inject_design_system
@@ -22,6 +27,70 @@ from frontend.pages.dashboard import render_dashboard_page
 from frontend.pages.heat_intelligence import render_heat_intelligence_page
 from frontend.pages.heatmap import render_heatmap_page
 from frontend.utils.history import get_session_history
+
+
+@st.cache_resource
+def ensure_backend_service() -> bool:
+    """Ensure the FastAPI backend service is running, auto-spawning it in the background if needed.
+    
+    This enables single-click deployment on Streamlit Community Cloud and zero-setup local runs.
+    """
+    # 1. Sync Streamlit secrets to os.environ for cloud deployments
+    try:
+        if hasattr(st, "secrets") and st.secrets:
+            for key in ["FORTYGUARD_API_KEY", "FORTYGUARD_BASE_URL", "APP_ENV", "LOG_LEVEL"]:
+                if key in st.secrets and not os.environ.get(key):
+                    os.environ[key] = str(st.secrets[key])
+    except Exception:
+        pass
+
+    backend_url = os.getenv("BACKEND_API_BASE_URL", "http://127.0.0.1:8000").rstrip("/")
+    health_endpoint = f"{backend_url}/api/v1/health/live"
+
+    # 2. Check if already running and responding
+    try:
+        resp = httpx.get(health_endpoint, timeout=0.8)
+        if resp.status_code == 200:
+            return True
+    except Exception:
+        pass
+
+    # 3. If running locally or in cloud container, spawn FastAPI in a daemon thread
+    if "127.0.0.1" in backend_url or "localhost" in backend_url:
+        try:
+            from main import app as fastapi_app
+
+            def _run_server() -> None:
+                config = uvicorn.Config(
+                    fastapi_app,
+                    host="127.0.0.1",
+                    port=8000,
+                    log_level="warning",
+                    access_log=False,
+                )
+                server = uvicorn.Server(config)
+                server.run()
+
+            server_thread = threading.Thread(target=_run_server, daemon=True)
+            server_thread.start()
+
+            # Wait briefly for startup
+            for _ in range(15):
+                time.sleep(0.2)
+                try:
+                    resp = httpx.get(health_endpoint, timeout=0.8)
+                    if resp.status_code == 200:
+                        return True
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    return False
+
+
+# Auto-start backend daemon if needed
+ensure_backend_service()
 
 st.set_page_config(
     page_title="FortyGuard Heat Intelligence",
