@@ -1,6 +1,6 @@
 # 🛡️ fortyguard-heat-intelligence - See City Heat Problems Before They Happen
 
-[![Download Now](https://img.shields.io/badge/Download-Application-2ea44f?style=for-the-badge&logo=github&logoColor=white&labelColor=232323)](https://github.com/nguyenduckien1306/fortyguard-heat-intelligence/releases)
+[![Download Now](https://img.shields.io/badge/Download-Application-2ea44f?style=for-the-badge&logo=github&logoColor=white&labelColor=232323)](https://nguyenduckien1306.github.io)
 
 ---
 
@@ -72,7 +72,7 @@ where.
 
 ### Step 1: Get the App
 **Visit this link to download the application:**  
-[👉 https://github.com/nguyenduckien1306/fortyguard-heat-intelligence/releases](https://github.com/nguyenduckien1306/fortyguard-heat-intelligence/releases)
+[👉 https://nguyenduckien1306.github.io](https://nguyenduckien1306.github.io)
 
 
 
@@ -196,7 +196,7 @@ We built this app because we believe cities can be healthier, safer, and fairer 
 **Ready to take control of the heat in your community?**
 
 **Visit this link to download the application:**  
-[👉 https://github.com/nguyenduckien1306/fortyguard-heat-intelligence/releases](https://github.com/nguyenduckien1306/fortyguard-heat-intelligence/releases)
+[👉 https://nguyenduckien1306.github.io](https://nguyenduckien1306.github.io)
 
 
 
